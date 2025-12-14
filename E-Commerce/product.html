@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopEasy - Your One-Stop Online Shopping Destination</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <span class="logo-icon">🛒</span>
+            <span>ShopEasy</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home" onclick="showHome()">Home</a></li>
+            <li><a href="#products" onclick="showHome()">Products</a></li>
+            <li>
+                <a href="#orders" onclick="showCart()" class="cart-link">
+                    Orders 🛒 <span id="cart-count" class="cart-count">0</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div id="main-content">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <h1>Welcome to ShopEasy</h1>
+            <p>Your One-Stop Online Shopping Destination</p>
+            <button class="shop-now-btn" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">Shop Now</button>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section">
+            <h2>Why Choose Us?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">✅</div>
+                    <h3>Quality Products</h3>
+                    <p>We carefully curate our collection to bring you only the best quality products from trusted brands.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚚</div>
+                    <h3>Fast Shipping</h3>
+                    <p>Get your orders delivered quickly with our express shipping options available nationwide.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💳</div>
+                    <h3>Secure Payments</h3>
+                    <p>Shop with confidence using our encrypted payment system that keeps your information safe.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Easy Returns</h3>
+                    <p>Not satisfied? Return your purchase within 30 days with our hassle-free return policy.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="products-section">
+            <h2>Featured Products</h2>
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="badge">BEST SELLER</span>
+                        <div style="font-size: 100px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));">🎧</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Premium Wireless Headphones</h3>
+                        <p class="product-description">Experience crystal-clear audio with active noise cancellation and 30-hour battery life.</p>
+                        <div class="product-rating">★★★★★ (2,847 reviews)</div>
+                        <div class="product-price">
+                            $129.99
+                            <span class="original-price">$199.99</span>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Premium Wireless Headphones', 129.99, '🎧')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="badge">NEW</span>
+                        <div style="font-size: 100px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));">⌚</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Smart Fitness Watch</h3>
+                        <p class="product-description">Track your fitness goals with heart rate monitoring, GPS, and sleep tracking features.</p>
+                        <div class="product-rating">★★★★☆ (1,523 reviews)</div>
+                        <div class="product-price">
+                            $89.99
+                            <span class="original-price">$149.99</span>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Smart Fitness Watch', 89.99, '⌚')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="badge">HOT DEAL</span>
+                        <div style="font-size: 100px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));">📱</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Wireless Charging Pad</h3>
+                        <p class="product-description">Fast wireless charging for all Qi-enabled devices with sleek minimalist design.</p>
+                        <div class="product-rating">★★★★★ (3,201 reviews)</div>
+                        <div class="product-price">
+                            $39.99
+                            <span class="original-price">$59.99</span>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Wireless Charging Pad', 39.99, '📱')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Cart/Orders Page -->
+    <div id="cart-page" class="cart-page" style="display: none;">
+        <div class="cart-container">
+            <h1>Your Orders / Cart</h1>
+            <button class="back-btn" onclick="showHome()">← Continue Shopping</button>
+            
+            <div id="cart-items" class="cart-items">
+                <!-- Cart items will be inserted here dynamically -->
+            </div>
+
+            <div id="empty-cart" class="empty-cart">
+                <div style="font-size: 80px;">🛒</div>
+                <h2>Your cart is empty</h2>
+                <p>Add some products to get started!</p>
+                <button class="shop-now-btn" onclick="showHome()">Start Shopping</button>
+            </div>
+
+            <div id="cart-summary" class="cart-summary" style="display: none;">
+                <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">$0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Shipping:</span>
+                    <span>$10.00</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total:</span>
+                    <span id="total">$0.00</span>
+                </div>
+                <button class="buy-btn" onclick="checkout()">Buy Now</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 ShopEasy. All rights reserved. Your One-Stop Online Shopping Destination.</p>
+    </footer>
+
+    <script>
+        // Cart array to store items
+        let cart = [];
+
+        // Add item to cart
+        function addToCart(name, price, icon) {
+            // Check if item already exists
+            const existingItem = cart.find(item => item.name === name);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    name: name,
+                    price: price,
+                    icon: icon,
+                    quantity: 1
+                });
+            }
+            
+            updateCartCount();
+            showNotification('✓ Item added to cart!');
+        }
+
+        // Update cart count badge
+        function updateCartCount() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-count').textContent = totalItems;
+        }
+
+        // Show cart/orders page
+        function showCart() {
+            document.getElementById('main-content').style.display = 'none';
+            document.getElementById('cart-page').style.display = 'block';
+            displayCartItems();
+        }
+
+        // Show home page
+        function showHome() {
+            document.getElementById('main-content').style.display = 'block';
+            document.getElementById('cart-page').style.display = 'none';
+        }
+
+        // Display cart items
+        function displayCartItems() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const emptyCart = document.getElementById('empty-cart');
+            const cartSummary = document.getElementById('cart-summary');
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '';
+                emptyCart.style.display = 'block';
+                cartSummary.style.display = 'none';
+            } else {
+                emptyCart.style.display = 'none';
+                cartSummary.style.display = 'block';
+                
+                cartItemsContainer.innerHTML = cart.map((item, index) => `
+                    <div class="cart-item">
+                        <div class="cart-item-icon">${item.icon}</div>
+                        <div class="cart-item-details">
+                            <h3>${item.name}</h3>
+                            <p class="cart-item-price">$${item.price.toFixed(2)} each</p>
+                        </div>
+                        <div class="cart-item-quantity">
+                            <button onclick="decreaseQuantity(${index})">-</button>
+                            <span>${item.quantity}</span>
+                            <button onclick="increaseQuantity(${index})">+</button>
+                        </div>
+                        <div class="cart-item-total">
+                            $${(item.price * item.quantity).toFixed(2)}
+                        </div>
+                        <button class="delete-btn" onclick="removeFromCart(${index})" title="Remove item">🗑️</button>
+                    </div>
+                `).join('');
+
+                updateCartSummary();
+            }
+        }
+
+        // Increase quantity
+        function increaseQuantity(index) {
+            cart[index].quantity += 1;
+            updateCartCount();
+            displayCartItems();
+        }
+
+        // Decrease quantity
+        function decreaseQuantity(index) {
+            if (cart[index].quantity > 1) {
+                cart[index].quantity -= 1;
+                updateCartCount();
+                displayCartItems();
+            } else {
+                removeFromCart(index);
+            }
+        }
+
+        // Remove item from cart
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartCount();
+            displayCartItems();
+            showNotification('Item removed from cart');
+        }
+
+        // Update cart summary
+        function updateCartSummary() {
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const shipping = 10.00;
+            const total = subtotal + shipping;
+
+            document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
+            document.getElementById('total').textContent = `$${total.toFixed(2)}`;
+        }
+
+        // Checkout function
+        function checkout() {
+            if (cart.length === 0) return;
+            
+            const total = document.getElementById('total').textContent;
+            alert(`🎉 Thank you for your purchase!\n\nOrder Total: ${total}\n\nYour order has been placed successfully and will be delivered soon!`);
+            
+            // Clear cart after purchase
+            cart = [];
+            updateCartCount();
+            displayCartItems();
+            showHome();
+        }
+
+        // Show notification
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 10);
+
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
