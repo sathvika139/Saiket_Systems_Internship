@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Flipping To-Do List</title>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+    <input id="list_toggle" type="checkbox">
+    <form class="form" onsubmit="return false;">
+        
+        <div class="form_front">
+            <div class="form_details">My To-Do List </div>
+
+            <div id="taskList">
+                </div>
+            
+            <span class="switch">
+                <label for="list_toggle" class="signup_tog">
+                    ➕ Add New Task
+                </label>
+            </span>
+        </div>
+
+        <div class="form_back">
+            <div class="form_details">To-Do</div>
+            
+            <input type="text" class="input" id="taskTitleInput" placeholder="Task Title" required>
+            <input type="text" class="input" id="taskDescInput" placeholder="Optional Description">
+            
+            <button type="button" class="btn" onclick="addTask()">Add Task</button>
+
+            <span class="switch">
+                <label for="list_toggle" class="signup_tog">
+                    ⬅️ Back to List
+                </label>
+            </span>
+        </div>
+    </form>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
